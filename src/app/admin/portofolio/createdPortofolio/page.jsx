@@ -25,8 +25,7 @@ export default function CreatePortofolioPage() {
       formDataToSend.append("gambar", formData.gambarFile);
     }
     
-    // ✅ Debug: Lihat isi FormData
-    console.log("📦 FormData contents:");
+    console.log("ormData contents:");
     for (let pair of formDataToSend.entries()) {
       console.log(pair[0] + ': ', pair[1]);
     }
@@ -39,13 +38,13 @@ export default function CreatePortofolioPage() {
       }
     );
 
-    console.log("✅ Response:", response.data);
+    console.log("Response:", response.data);
     toast.success("Berhasil Menambahkan Data ke Portofolio");
     router.push("/admin/portofolio");
     
   } catch (error) {
-    console.error("❌ Upload gagal:", error);
-    console.error("❌ Error response:", error.response?.data);
+    console.error("Upload gagal:", error);
+    console.error("Error response:", error.response?.data);
     toast.error(
       "Gagal menambahkan portofolio: " +
         (error.response?.data?.message || error.message)

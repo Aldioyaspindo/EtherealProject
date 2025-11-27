@@ -18,7 +18,7 @@ export default function CtaSection() {
       
       {/* Gambar Utama (diblur lembut) */}
       <Image
-        src="/assetgambar/imageStore.png"
+        src="/assetgambar/imageStore.webp"
         alt="Background Illustration"
         fill
         className="object-cover blur-sm brightness-90"

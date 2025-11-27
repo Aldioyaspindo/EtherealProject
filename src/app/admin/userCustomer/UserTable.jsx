@@ -38,50 +38,50 @@ export default function UserTable({ initialUsers }) {
         toast.error(
           `Gagal: ${error.response.data.message || "Error dari server"}`,
           {
-            duration: 4000,
-            position: "top-center",
-            style: {
-              background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-              color: "white",
-              padding: "16px 20px",
-              borderRadius: "16px",
-              boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
-              border: "2px solid rgba(255, 255, 255, 0.2)",
-              minWidth: "320px",
-            },
-          }
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "linear-gradient(#f5576c 100%)",
+          color: "white",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      }
         );
       } else if (error.request) {
         toast.error(
           "Gagal: Tidak bisa terhubung ke server. Cek API dan CORS.",
           {
-            duration: 4000,
-            position: "top-center",
-            style: {
-              background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-              color: "white",
-              padding: "16px 20px",
-              borderRadius: "16px",
-              boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
-              border: "2px solid rgba(255, 255, 255, 0.2)",
-              minWidth: "320px",
-            },
-          }
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "linear-gradient(#f5576c 100%)",
+          color: "white",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      }
         );
       } else {
         toast.error(`Gagal: ${error.message}`, {
-          duration: 4000,
-          position: "top-center",
-          style: {
-            background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-            color: "white",
-            padding: "16px 20px",
-            borderRadius: "16px",
-            boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
-            border: "2px solid rgba(255, 255, 255, 0.2)",
-            minWidth: "320px",
-          },
-        });
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "linear-gradient(#f5576c 100%)",
+          color: "white",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
       }
     }
   };

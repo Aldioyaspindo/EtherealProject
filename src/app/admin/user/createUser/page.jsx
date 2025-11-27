@@ -23,20 +23,41 @@ export default function CreateUserPage() {
       // Hapus semua kode pengecekan token manual dan toast error di frontend
 
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/admin/register`, // ✅ URL KOREKSI
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admin/register`,
         form,
         {
-          withCredentials: true, // ✅ ANDALKAN PENGIRIMAN COOKIE OTOMATIS
+          withCredentials: true,
         }
       );
       toast.success("User berhasil dibuat!", {
-        duration: 3000, // ... style
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#1f2937",
+          color: "white",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
       });
       router.push("/admin/user");
     } catch (error) {
       // Tangani kegagalan otorisasi 401/403 yang dikirim dari backend
       if (error.response?.status === 401 || error.response?.status === 403) {
-        toast.error("Sesi berakhir/Izin ditolak. Silakan login ulang.");
+        toast.error("Sesi berakhir/Izin ditolak. Silakan login ulang.", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "linear-gradient(#f5576c 100%)",
+          color: "white",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
         router.push("/loginadmin");
       } else {
         console.error("CREATE USER ERROR:", error);

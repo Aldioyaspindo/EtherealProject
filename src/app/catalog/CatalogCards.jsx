@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { addToCart } from "../lib/api"; // ✅ Import dari api.js
+import Image from "next/image";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -60,9 +61,11 @@ export default function CatalogCards({ item }) {
       <Link href={`/catalog/${item._id}`} className="block flex-grow">
         {/* Gambar seragam seperti contoh */}
         <div className="w-full aspect-[3/4] overflow-hidden">
-          <img
+          <Image
             src={`${process.env.NEXT_PUBLIC_API_URL}/${item.productImage}`}
             alt={item.productName}
+            width={500}
+            height={500}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />

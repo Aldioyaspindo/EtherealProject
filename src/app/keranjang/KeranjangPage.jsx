@@ -9,6 +9,7 @@ export default function CartPage() {
   const [userId, setUserId] = useState(null);
   const [cart, setCart] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]); // Item yang dipilih
+  const [customerInfo, setCustomerInfo] = useState(null); // Tambahan: simpan info customer
   const router = useRouter();
 
   // Ambil user yang login dari cookie token
@@ -24,6 +25,11 @@ export default function CartPage() {
 
         if (data?.user?._id) {
           setUserId(data.user._id);
+          // Simpan informasi customer
+          setCustomerInfo({
+            username: data.user.username || "Nama tidak tersedia",
+            nomorhp: data.user.nomorhp || "Nomor tidak tersedia"
+          });
         } else {
           console.log(
             "User belum login (respon sukses, tapi data user kosong)"
@@ -156,8 +162,17 @@ export default function CartPage() {
     // Filter hanya item yang dipilih
     const itemsToOrder = cart.items.filter(item => selectedItems.includes(item._id));
 
-    // Buat pesan WhatsApp
+    // Buat pesan WhatsApp dengan informasi customer di awal
     let message = "Halo, saya ingin memesan:\n\n";
+    
+    // Tambahkan informasi customer
+    message += "*INFORMASI CUSTOMER:*\n";
+    message += `Nama: ${customerInfo?.username || "Tidak tersedia"}\n`;
+    message += `No. HP: ${customerInfo?.nomorhp || "Tidak tersedia"}\n`;
+    message += `\n━━━━━━━━━━━━━━━━━━━━\n\n`;
+    
+    // Tambahkan detail pesanan
+    message += "*DETAIL PESANAN:*\n\n";
 
     itemsToOrder.forEach((item, index) => {
       const product = item.product || {};
@@ -181,6 +196,7 @@ export default function CartPage() {
     });
 
     const totalSelected = calculateSelectedTotal();
+    message += `━━━━━━━━━━━━━━━━━━━━\n`;
     message += `*Total Keseluruhan: Rp ${totalSelected?.toLocaleString("id-ID") || 0}*\n\n`;
     message += "Mohon info lanjut untuk total dan pengiriman. Terima kasih!";
 

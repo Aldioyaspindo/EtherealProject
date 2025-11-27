@@ -1,9 +1,13 @@
 const COLOR_MAP = {
   putih: "#ffffff",
   hitam: "#000000",
-  merah: "#ff0000",
-  biru: "#0000ff",
-  hijau: "#00ff00",
+  merah: "#c20e17",
+  biru: "#163eb5",
+  hijau: "#1dc249",
+  pink: "#c7248e",
+  kuning: "#eaed2d",
+  orange: "#cc541d",
+  ungu: "#af1aba",
 };
 
 export const getColorCode = (color) => {

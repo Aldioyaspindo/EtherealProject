@@ -23,10 +23,33 @@ export default function PortofolioTable({ initialPortofolios }) {
 
       // PERBAIKAN: setCatalogs -> setPortofolios
       setPortofolios((prev) => prev.filter((item) => item._id !== id)); 
-      toast.success("Berhasil Menghapus Portofolio");
+      toast.success("Berhasil Menghapus Portofolio", {
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#1f2937",
+          color: "white",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
     } catch (error) {
       console.error(error);
-      toast.error("Terjadi Kesalahan Saat menghapus Portofolio");
+      toast.error("Terjadi Kesalahan Saat menghapus Portofolio", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "linear-gradient(#f5576c 100%)",
+          color: "white",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     }
   };
 

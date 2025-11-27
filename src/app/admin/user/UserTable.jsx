@@ -47,7 +47,18 @@ export default function UserTableClient({ initialUsers }) {
         `${process.env.NEXT_PUBLIC_API_URL}/api/admin/${userId}`,
         { withCredentials: true }
       );
-      toast.success(`User ${userId} berhasil dihapus.`);
+      toast.success(`User ${userId} berhasil dihapus.`, {
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#1f2937",
+          color: "white",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
 
       // Filter list users saat ini, hanya menyisakan user yang TIDAK memiliki userId ini
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
