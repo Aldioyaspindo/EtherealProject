@@ -11,7 +11,7 @@ export default function HeroSection() {
       
       {/* 🔹 Background Image */}
       <Image
-        src="/assetgambar/HeroImage.png"
+        src="/assetgambar/HeroImage.webp"
         alt="Hero Background"
         fill
         priority

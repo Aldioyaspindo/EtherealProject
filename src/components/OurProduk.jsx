@@ -20,7 +20,7 @@ export default function OurProductSection() {
         {/* Produk 1 */}
         <div className="flex flex-col items-center text-center">
           <Image
-            src="/assetgambar/Produk1.png"
+            src="/assetgambar/Produk1.webp"
             alt="Jeans"
             width={400}
             height={800}
@@ -41,7 +41,7 @@ export default function OurProductSection() {
         {/* Produk 2 */}
         <div className="flex flex-col items-center text-center">
           <Image
-            src="/assetgambar/Produk2.png"
+            src="/assetgambar/Produk2.webp"
             alt="Pakaian"
             width={400}
             height={800}
@@ -63,7 +63,7 @@ export default function OurProductSection() {
         {/* Produk 3 */}
         <div className="flex flex-col items-center text-center">
           <Image
-            src="/assetgambar/Produk3.png"
+            src="/assetgambar/Produk3.webp"
             alt="Sablon"
             width={400}
             height={800}

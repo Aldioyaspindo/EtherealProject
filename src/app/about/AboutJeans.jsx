@@ -17,7 +17,7 @@ export default function AboutJeans() {
         {/* Menggunakan div wrapper dan 'fill' untuk adaptasi ukuran gambar */}
         <div className="relative w-full h-64 sm:h-80 md:h-[400px]">
           <Image
-            src="/assetgambar/jeans1.jpg"
+            src="/assetgambar/jeans1.webp"
             alt="Ethereal Jeans"
             fill // Menggunakan 'fill' agar gambar mengisi div container
             className="rounded-xl shadow-lg object-cover" // object-cover agar gambar tidak terdistorsi
