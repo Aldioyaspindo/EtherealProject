@@ -10,7 +10,7 @@ export default function HeroSectionAbout() {
       <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] bg-zinc-300 flex flex-col justify-center items-center text-center overflow-hidden">
         {/* Background Image */}
         <Image
-          src="/assetgambar/imagestore2.jpg"
+          src="/assetgambar/imagestore2.webp"
           alt="Hero Image"
           fill
           className="object-cover"
