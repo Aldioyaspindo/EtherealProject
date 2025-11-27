@@ -1,5 +1,13 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Poppins } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // pilih bobot yang kamu pakai
+  variable: "--font-poppins", // buat variabel CSS supaya bisa dipakai di Tailwind
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +31,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
