@@ -7,7 +7,7 @@ import Link from "next/link";
 import { FaRegTrashAlt, FaRetweet } from "react-icons/fa";
 import toast from "react-hot-toast";
 
-export default function ArticleTable({ initialArtikels }) {
+export default function ArticleTable({ initialArtikels = [] }) {
   
   const [artikels, setArtikels] = useState(initialArtikels);
   
@@ -16,10 +16,15 @@ export default function ArticleTable({ initialArtikels }) {
     return new Date(dateString).toLocaleDateString('id-ID', options);
   };
 
-  const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + '...';
-  };
+    const truncateText = (text, maxLength) => {
+  // 🔥 PERBAIKAN: Cek jika text adalah falsy (null, undefined, atau string kosong)
+  if (!text) return ""; 
+  
+  // Sekarang aman untuk menggunakan .length
+  if (text.length <= maxLength) return text;
+  
+  return text.substring(0, maxLength) + '...';
+};
 
   const handleDelete = async (id) => {
     const confirmDelete = confirm("yakin ingin menghapus artikel ini ?");

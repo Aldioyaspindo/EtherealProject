@@ -4,20 +4,20 @@ import Image from "next/image";
 
 export default function OurCollections() {
   const collections = [
-    { src: "/assetgambar/BlackDenim.jpg", alt: "Black Denim", title: "Black Denim" },
-    { src: "/assetgambar/JeansDenim.jpg", alt: "Jeans Denim", title: "Jeans Denim" },
-    { src: "/assetgambar/premium.jpg", alt: "Premium", title: "Premium" },
-    { src: "/assetgambar/HeavyWheight.jpg", alt: "Heavy Weight", title: "Heavy Weight" },
-    { src: "/assetgambar/LongHeavyWheight.jpg", alt: "Long Heavy Weight", title: "Long Heavy Weight" },
-    { src: "/assetgambar/Youth.jpg", alt: "Youth", title: "Youth" },
-    { src: "/assetgambar/Ringer.jpg", alt: "Ringer", title: "Ringer" },
-    { src: "/assetgambar/Raglan.jpg", alt: "Raglan", title: "Raglan" },
-    { src: "/assetgambar/Polo.jpg", alt: "Polo", title: "Polo" },
-    { src: "/assetgambar/Crewneck.jpg", alt: "Crewneck", title: "Crewneck" },
-    { src: "/assetgambar/Pullover.jpg", alt: "Pullover", title: "Pullover" },
-    { src: "/assetgambar/Bomber.jpg", alt: "Bomber", title: "Bomber" },
-    { src: "/assetgambar/Windbreaker.jpg", alt: "Windbreaker", title: "Windbreaker" },
-    { src: "/assetgambar/Coachjaket.jpg", alt: "Coachjacket", title: "Coachjacket" },
+    { src: "/assetgambar/BlackDenim.webp", alt: "Black Denim", title: "Black Denim" },
+    { src: "/assetgambar/JeansDenim.webp", alt: "Jeans Denim", title: "Jeans Denim" },
+    { src: "/assetgambar/premium.webp", alt: "Premium", title: "Premium" },
+    { src: "/assetgambar/HeavyWheight.webp", alt: "Heavy Weight", title: "Heavy Weight" },
+    { src: "/assetgambar/LongHeavyWheight.webp", alt: "Long Heavy Weight", title: "Long Heavy Weight" },
+    { src: "/assetgambar/Youth.webp", alt: "Youth", title: "Youth" },
+    { src: "/assetgambar/Ringer.webp", alt: "Ringer", title: "Ringer" },
+    { src: "/assetgambar/Raglan.webp", alt: "Raglan", title: "Raglan" },
+    { src: "/assetgambar/Polo.webp", alt: "Polo", title: "Polo" },
+    { src: "/assetgambar/Crewneck.webp", alt: "Crewneck", title: "Crewneck" },
+    { src: "/assetgambar/Pullover.webp", alt: "Pullover", title: "Pullover" },
+    { src: "/assetgambar/Bomber.webp", alt: "Bomber", title: "Bomber" },
+    { src: "/assetgambar/Windbreaker.webp", alt: "Windbreaker", title: "Windbreaker" },
+    { src: "/assetgambar/Coachjaket.webp", alt: "Coachjacket", title: "Coachjacket" },
   ];
 
   return (

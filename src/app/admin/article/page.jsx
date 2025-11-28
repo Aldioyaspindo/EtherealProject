@@ -15,6 +15,8 @@ async function fetchArtikels() {
       throw new Error("Gagal mengambil data dari server");
     }
 
+
+
     const responseData = await response.json();
     const data = Array.isArray(responseData.data) ? responseData.data : [];
     return data;

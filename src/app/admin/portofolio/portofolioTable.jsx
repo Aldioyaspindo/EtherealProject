@@ -63,8 +63,7 @@ export default function PortofolioTable({ initialPortofolios }) {
                   </td>
                   <td className="px-4 py-3">
                     <img
-                      src={`${process.env.NEXT_PUBLIC_API_URL}/${portofolio.gambar}`}
-                      alt={portofolio.keterangan}
+                      src={portofolio.gambar} alt={portofolio.keterangan}
                       className="w-32 h-32 object-cover rounded-lg border border-neutral-300"
                       onError={(e) => {
                         e.target.src =

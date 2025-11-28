@@ -17,7 +17,7 @@ export default function AboutSablon() {
         {/* Kita tambahkan md:order-last agar Gambar pindah ke Kanan di desktop. */}
         <div className="relative w-full h-64 sm:h-80 md:h-[400px] md:order-last">
           <Image
-            src="/assetgambar/sablon1.jpg"
+            src="/assetgambar/sablon1.webp"
             alt="Sablon Ethereal"
             fill // Menggunakan 'fill' agar gambar mengisi div container
             className="rounded-xl shadow-lg object-cover" // object-cover agar gambar tidak terdistorsi

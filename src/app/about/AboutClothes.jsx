@@ -17,7 +17,7 @@ export default function AboutClothes() {
         {/* Tambahkan order-last untuk memindahkannya ke kanan di desktop */}
         <div className="relative w-full h-64 sm:h-80 md:h-[400px] md:order-last"> 
           <Image
-            src="/assetgambar/imagestore5.JPG"
+            src="/assetgambar/imagestore5.webp"
             alt="Produk Ethereal"
             fill // Menggunakan 'fill' agar gambar mengisi div container
             className="rounded-xl shadow-lg object-cover" 

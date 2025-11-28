@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -249,9 +250,11 @@ export default function CartPage() {
                     href={`/catalog/${product._id}`}
                     className="flex items-center gap-4 flex-1"
                   >
-                    <img
-                      src={imgSrc}
+                    <Image
+                      src={product.productImage}
                       alt={product.productName || "Produk"}
+                      width={500}
+                      height={500}
                       className="w-24 h-24 object-cover rounded-md border"
                     />
 

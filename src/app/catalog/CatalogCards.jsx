@@ -1,16 +1,11 @@
 "use client";
 import { FaShoppingCart } from "react-icons/fa";
-import { Poppins } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { addToCart } from "../lib/api"; // ✅ Import dari api.js
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
 
 export default function CatalogCards({ item }) {
   const [loading, setLoading] = useState(false);
@@ -55,14 +50,16 @@ export default function CatalogCards({ item }) {
 
   return (
     <div
-      className={`flex flex-col bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition ${poppins.className}`}
+      className={`flex flex-col bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition`}
     >
       <Link href={`/catalog/${item._id}`} className="block flex-grow">
         {/* Gambar seragam seperti contoh */}
         <div className="w-full aspect-[3/4] overflow-hidden">
-          <img
-            src={`${process.env.NEXT_PUBLIC_API_URL}/${item.productImage}`}
+          <Image
+            src={item.productImage}
             alt={item.productName}
+            width={500}
+            height={500}
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />

@@ -16,7 +16,7 @@ export default function AboutStore() {
         {/* Kolom Gambar (SEKARANG DI ATAS - Tampil di Kiri pada Desktop dan di Atas pada Mobile) */}
         <div className="relative w-full h-64 sm:h-80 md:h-[400px]">
           <Image
-            src="/assetgambar/imagestore2.JPG"
+            src="/assetgambar/imagestore2.webp"
             alt="Ethereal Image"
             fill // Menggunakan 'fill' agar gambar mengisi div container
             className="rounded-xl shadow-lg object-cover" // object-cover agar gambar tidak terdistorsi
