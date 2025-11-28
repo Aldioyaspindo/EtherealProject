@@ -46,7 +46,7 @@ export default function PortfolioDesain() {
           {/* Gambar utama: Menggunakan aspect ratio, bukan tinggi tetap 500px */}
           <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-[3/4] z-10">
             <Image
-              src="/assetgambar/Sablonimage.png"
+              src="/assetgambar/Sablonimage.webp"
               alt="Desain DTF"
               fill
               className="object-cover rounded-xl shadow-xl transform rotate-3"
