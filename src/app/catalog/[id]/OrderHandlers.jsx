@@ -56,6 +56,7 @@ export const handleAddToCart = async ({
 
 export const handleOrderWhatsApp = ({ selectedSize, catalog, quantity }) => {
   if (!selectedSize) {
+    // toast
     toast.error("Silakan pilih ukuran terlebih dahulu", {
         duration: 4000,
         position: "bottom-center",
