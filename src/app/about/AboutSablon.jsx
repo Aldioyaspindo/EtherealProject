@@ -6,13 +6,14 @@ export default function AboutSablon() {
   return (
     <div>
       {/* Jasa Sablon */}
-      <section className="container text-black mx-auto 
+      <section
+        className="container text-black mx-auto 
                           px-4 sm:px-8 md:px-12 lg:px-20 
                           py-16 md:py-20 
                           grid md:grid-cols-2 
                           gap-10 md:gap-16 lg:gap-24 
-                          items-center">
-        
+                          items-center"
+      >
         {/* Kolom Gambar (Tampil di Atas pada Mobile, Sekarang di KANAN pada Desktop) */}
         {/* Kita tambahkan md:order-last agar Gambar pindah ke Kanan di desktop. */}
         <div className="relative w-full h-64 sm:h-80 md:h-[400px] md:order-last">
@@ -23,10 +24,10 @@ export default function AboutSablon() {
             className="rounded-xl shadow-lg object-cover" // object-cover agar gambar tidak terdistorsi
           />
         </div>
-        
+
         {/* Kolom Teks (Tampil di Bawah pada Mobile, Sekarang di KIRI pada Desktop) */}
         {/* Teks akan otomatis menjadi kolom pertama di desktop karena Gambar memiliki md:order-last */}
-        <div> 
+        <div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 lg:mb-5">
             ETHEREAL Sablon
           </h2>
@@ -36,7 +37,6 @@ export default function AboutSablon() {
             kami wujudkan!
           </p>
         </div>
-        
       </section>
     </div>
   );

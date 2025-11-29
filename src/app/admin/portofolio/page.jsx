@@ -4,7 +4,6 @@ import { FaPlus } from "react-icons/fa";
 import PortofolioTable from "./portofolioTable";
 export const dynamic = "force-dynamic";
 
-
 // 1. Fungsi fetch data (berjalan di server)
 async function fetchPortofolio() {
   try {
@@ -63,7 +62,7 @@ export default async function PortofolioPage() {
       {/* 4. Render Komponen Klien dan oper 'portofoliosData' sebagai props */}
       <div className="mx-auto max-w-[1171px] mt-6 sm:mt-8 md:mt-10 px-4 mb-10">
         {/* PERBAIKAN: Gunakan variabel 'portofoliosData' */}
-        <PortofolioTable initialPortofolios={portofoliosData} /> 
+        <PortofolioTable initialPortofolios={portofoliosData} />
       </div>
     </div>
   );

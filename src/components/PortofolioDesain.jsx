@@ -8,11 +8,9 @@ export default function PortfolioDesain() {
     // Padding vertikal yang adaptif
     <section className="w-full bg-white py-12 md:py-20">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20 px-4 sm:px-8">
-        
         {/* 🔹 Bagian Kiri (Teks & Deskripsi) */}
         {/* Mengubah space-y kaku menjadi nilai responsif */}
         <div className="flex-1 space-y-6 md:space-y-10 lg:space-y-16 order-2 md:order-1">
-          
           {/* Judul: Ukuran font responsif (kecil di mobile, besar di desktop) */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium font-['Poppins'] text-black">
             Print Your Desain
@@ -39,7 +37,6 @@ export default function PortfolioDesain() {
         {/* 🔹 Bagian Kanan (Gambar) */}
         {/* Menggunakan order-1 untuk menempatkan gambar di atas teks di mobile */}
         <div className="flex-1 relative flex justify-center w-full md:w-auto order-1 md:order-2">
-          
           {/* Background abu-abu: Menggunakan persentase lebar yang lebih stabil dan tinggi yang fleksibel */}
           <div className="absolute w-[90%] h-[95%] bg-zinc-300 rounded-xl shadow-lg -rotate-3 transform origin-center"></div>
 

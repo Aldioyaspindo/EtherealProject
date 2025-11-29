@@ -33,12 +33,8 @@ export default function UpdatePortofolioPage() {
           gambarUrl: data.gambar, // Benar
           gambarFile: null,
         });
-
-        // Tambahkan notifikasi toast jika berhasil (opsional, tapi bagus untuk UX)
-        toast.success("Data portofolio siap diupdate.", { duration: 1500 });
       } catch (error) {
         console.error(error);
-        toast.error("Gagal memuat data portofolio.");
         router.push("/admin/portofolio"); // Arahkan ke halaman portofolio
       } finally {
         setPageLoading(false);
@@ -48,41 +44,67 @@ export default function UpdatePortofolioPage() {
     fetchData();
   }, [id, router]);
 
-const handleSubmit = async (formData) => {
-  setSubmitLoading(true);
+  const handleSubmit = async (formData) => {
+    setSubmitLoading(true);
 
-  try {
-    const fd = new FormData();
-    fd.append("keterangan", formData.keterangan);
-    
-    if (formData.gambarFile) {
-      fd.append("gambar", formData.gambarFile);
-      console.log("✅ Mengirim file baru:", formData.gambarFile.name);
-    } else {
-      console.log("ℹ️ Tidak ada file baru, gambar lama dipertahankan");
+    try {
+      const fd = new FormData();
+      fd.append("keterangan", formData.keterangan);
+
+      if (formData.gambarFile) {
+        fd.append("gambar", formData.gambarFile);
+        console.log("✅ Mengirim file baru:", formData.gambarFile.name);
+      } else {
+        console.log("ℹ️ Tidak ada file baru, gambar lama dipertahankan");
+      }
+
+      console.log(
+        "📤 Mengirim ke:",
+        `${process.env.NEXT_PUBLIC_API_URL}/portofolio/${id}`
+      );
+
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_URL}/portofolio/${id}`,
+        fd,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
+      toast.success("Portofolio berhasil diupdate!", {
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
+      router.push("/admin/portofolio");
+    } catch (error) {
+      console.error("❌ Error detail:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
+      toast.error(error.response?.data?.message || "Update portofolio gagal.", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
+    } finally {
+      setSubmitLoading(false);
     }
-
-    console.log("📤 Mengirim ke:", `${process.env.NEXT_PUBLIC_API_URL}/portofolio/${id}`);
-    
-    const response = await axios.patch(
-      `${process.env.NEXT_PUBLIC_API_URL}/portofolio/${id}`,
-      fd,
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
-
-    toast.success("Portofolio berhasil diupdate!");
-    router.push("/admin/portofolio");
-  } catch (error) {
-    console.error("❌ Error detail:", {
-      message: error.message,
-      response: error.response?.data,
-      status: error.response?.status
-    });
-    toast.error(error.response?.data?.message || "Update portofolio gagal.");
-  } finally {
-    setSubmitLoading(false);
-  }
-};
+  };
 
   if (pageLoading) {
     return (

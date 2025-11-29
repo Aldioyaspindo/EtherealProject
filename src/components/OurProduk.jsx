@@ -6,7 +6,6 @@ export default function OurProductSection() {
   return (
     // Menggunakan padding vertikal yang adaptif
     <section className="w-full bg-white py-12 md:py-20">
-      
       {/* Judul: Ukuran font responsif dan margin bawah adaptif */}
       <div className="text-center mb-8 md:mb-16 px-4">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium font-[Poppins] text-black">
@@ -16,7 +15,6 @@ export default function OurProductSection() {
 
       {/* Grid Produk: Tetap 3 kolom di SEMUA ukuran (grid-cols-3) */}
       <div className="max-w-7xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 lg:gap-8 px-2 sm:px-4">
-        
         {/* Produk 1 */}
         <div className="flex flex-col items-center text-center">
           <Image

@@ -4,19 +4,18 @@ import { FaPlus } from "react-icons/fa";
 import ArticleTable from "./ArticleTable";
 export const dynamic = "force-dynamic";
 
-
 async function fetchArtikels() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`, {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/articles`,
+      {
+        cache: "no-store",
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Gagal mengambil data dari server");
     }
-
-
-
     const responseData = await response.json();
     const data = Array.isArray(responseData.data) ? responseData.data : [];
     return data;
@@ -27,7 +26,6 @@ async function fetchArtikels() {
 }
 
 export default async function ArtikelPage() {
-  
   const artikels = await fetchArtikels();
 
   return (

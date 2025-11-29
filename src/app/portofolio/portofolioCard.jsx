@@ -1,4 +1,5 @@
 // File: PortofolioCard.js
+import Image from "next/image";
 
 export default function PortofolioCard({ item }) {
   // Pastikan item memiliki properti yang diperlukan untuk mencegah error
@@ -36,14 +37,16 @@ export default function PortofolioCard({ item }) {
   return (
     <div
       // Memastikan kartu mengisi tinggi kolomnya dan memiliki tampilan yang bagus
-      className={`flex flex-col bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:shadow-gray-300 transition duration-300 transform hover:-translate-y-0.5 h-full`}
+      className={`flex flex-col bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:shadow-gray-300 transition duration-300 transform hover:-translate-y-0.5 h-full group`}
     >
-      {/* Container Gambar: Tinggi responsif, lebih kecil di mobile */}
-      <div className="w-full h-[500px] sm:h-[220px] md:h-[500px] overflow-hidden">
-        <img
-          src={`${process.env.NEXT_PUBLIC_API_URL}/${item.gambar}`}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+      <div className="w-full relative **pt-[100%]** overflow-hidden">
+        <Image
+          src={item.gambar}
+          alt={item.keterangan}
+          height={500}
+          width={500}
+          // Image harus diatur sebagai 'absolute' untuk mengisi container padding-top
+          className="**absolute top-0 left-0 h-full w-full** object-cover transition-transform duration-500 **group-hover:scale-110**"
         />
       </div>
 
@@ -54,7 +57,7 @@ export default function PortofolioCard({ item }) {
           {title}
         </h3>
 
-        {/* Deskripsi: Sekarang menampilkan Tanggal dalam format DMY */}
+        {/* Deskripsi: Menampilkan Tanggal dalam format DMY */}
         <p className="text-gray-700 text-sm sm:text-base flex-grow mb-3 sm:mb-4">
           {excerpt}
         </p>

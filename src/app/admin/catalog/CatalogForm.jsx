@@ -84,7 +84,9 @@ export default function CatalogForm({
 
         <form onSubmit={handleSubmit}>
           {/* Product Name */}
-          <label className="block mb-2 font-medium text-black">Nama Produk</label>
+          <label className="block mb-2 font-medium text-black">
+            Nama Produk
+          </label>
           <input
             type="text"
             name="productName"
@@ -95,7 +97,9 @@ export default function CatalogForm({
           />
 
           {/* Product Price */}
-          <label className="block mb-2 font-medium text-black">Harga Produk</label>
+          <label className="block mb-2 font-medium text-black">
+            Harga Produk
+          </label>
           <input
             type="number"
             name="productPrice"
@@ -107,7 +111,9 @@ export default function CatalogForm({
           />
 
           {/* Product Color */}
-          <label className="block mb-2 font-medium text-black">Warna Produk</label>
+          <label className="block mb-2 font-medium text-black">
+            Warna Produk
+          </label>
           <input
             type="text"
             name="productColor"
@@ -118,7 +124,9 @@ export default function CatalogForm({
           />
 
           {/* Product Size */}
-          <label className="block mb-2 font-medium text-black">Ukuran Produk</label>
+          <label className="block mb-2 font-medium text-black">
+            Ukuran Produk
+          </label>
           <input
             type="text"
             name="productSize"
@@ -129,7 +137,9 @@ export default function CatalogForm({
           />
 
           {/* Product Total */}
-          <label className="block mb-2 font-medium text-black">Total Product</label>
+          <label className="block mb-2 font-medium text-black">
+            Total Product
+          </label>
           <input
             type="number"
             name="productTotal"
@@ -141,7 +151,9 @@ export default function CatalogForm({
           />
 
           {/* Product Description */}
-          <label className="block mb-2 font-medium text-black">Deskripsi Produk</label>
+          <label className="block mb-2 font-medium text-black">
+            Deskripsi Produk
+          </label>
           <textarea
             name="productDescription"
             value={formData.productDescription}
@@ -179,7 +191,7 @@ export default function CatalogForm({
               </div>
             )}
           </div>
-          
+
           {/* Tombol */}
           <div className="flex gap-4">
             <button

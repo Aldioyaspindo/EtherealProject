@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -23,14 +24,14 @@ export default function AdminLogin() {
         { withCredentials: true }
       );
 
-      console.log("✅ Admin login success:", res.data);
+      console.log("Admin login success:", res.data);
 
       // Simpan token di COOKIES (bukan localStorage)
       if (res.data.token) {
         document.cookie = `adminToken=${res.data.token}; path=/; max-age=${
           7 * 24 * 60 * 60
         }`; // 7 hari
-        console.log("💾 Admin token saved to cookies");
+        console.log("Admin token saved to cookies");
       }
 
       // Redirect
@@ -38,11 +39,20 @@ export default function AdminLogin() {
         window.location.href = "/admin";
       }, 100);
     } catch (err) {
-      console.error("❌ Admin login error:", err);
-      setError(
-        err.response?.data?.message ||
-          "Login gagal. Periksa username dan password."
-      );
+      console.error("Admin login error:", err);
+      toast.error("Login gagal. Periksa username dan password.", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     } finally {
       setLoading(false);
     }
@@ -50,9 +60,6 @@ export default function AdminLogin() {
 
   return (
     <section className="flex flex-col md:flex-row w-full h-screen">
-      {/* =============================== */}
-      {/* KIRI: FORM LOGIN */}
-      {/* =============================== */}
       <div className="flex-1 flex items-center justify-center p-10 bg-gray-50">
         <form
           onSubmit={handleLogin}
@@ -110,10 +117,7 @@ export default function AdminLogin() {
         </form>
       </div>
 
-      {/* =============================== */}
-      {/* KANAN: GAMBAR + LOGO */}
-      {/* =============================== */}
-      <div className="flex-1 relative">
+      <div className="flex-1 relative hidden md:block">
         <Image
           src="/assetgambar/imagelogin.webp"
           alt="Background"

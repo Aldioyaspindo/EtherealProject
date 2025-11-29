@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie"; // Pastikan import ini digunakan
 
 // Ambil detail produk (kode ini sudah benar)
 export const fetchCatalogById = async (id) => {
@@ -26,7 +25,7 @@ export const addToCart = async ({ productId, quantity }) => {
 
     const data = await res.json();
 
-        // 🔥 Cek apakah backend mengirim 401 karena belum login
+    // Cek apakah backend mengirim 401 karena belum login
     if (res.status === 401) {
       const data = await res.json();
 

@@ -17,9 +17,12 @@ export default function ArticlesPage() {
   useEffect(() => {
     const fetchArtikels = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/articles`);
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/articles`
+        );
         const data = Array.isArray(response.data.data)
-          ? response.data.data : [];
+          ? response.data.data
+          : [];
         setArtikels(data);
       } catch (error) {
         console.error("Gagal mengambil data artikel:", error);

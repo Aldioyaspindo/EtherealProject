@@ -18,8 +18,8 @@ export default function Feedback() {
         duration: 4000,
         position: "bottom-center",
         style: {
-          background: "linear-gradient(#f5576c 80%)",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "16px 20px",
           borderRadius: "16px",
           boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
@@ -41,8 +41,8 @@ export default function Feedback() {
         duration: 3000,
         position: "bottom-center",
         style: {
-          background: "#1f2937",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "12px 24px",
           borderRadius: "999px",
           fontSize: "14px",
@@ -58,8 +58,8 @@ export default function Feedback() {
         duration: 4000,
         position: "bottom-center",
         style: {
-          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "16px 20px",
           borderRadius: "16px",
           boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
@@ -67,7 +67,6 @@ export default function Feedback() {
           minWidth: "320px",
         },
       });
-
     } finally {
       setLoading(false);
     }
@@ -79,7 +78,7 @@ export default function Feedback() {
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">
         Beri Komentar & Rating
       </h2>
-      
+
       <form onSubmit={handleSubmit}>
         {/* Komentar */}
         <div className="mb-6">
@@ -141,10 +140,24 @@ export default function Feedback() {
         >
           {loading ? (
             <div className="flex justify-center items-center">
-              <svg className="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
+              <svg
+                className="animate-spin h-5 w-5 mr-3 text-white"
+                viewBox="0 0 24 24"
+              >
                 {/* Spinner Icon */}
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
               </svg>
               Menyimpan...
             </div>

@@ -4,11 +4,27 @@ import Image from "next/image";
 
 export default function OurCollections() {
   const collections = [
-    { src: "/assetgambar/BlackDenim.webp", alt: "Black Denim", title: "Black Denim" },
-    { src: "/assetgambar/JeansDenim.webp", alt: "Jeans Denim", title: "Jeans Denim" },
+    {
+      src: "/assetgambar/BlackDenim.webp",
+      alt: "Black Denim",
+      title: "Black Denim",
+    },
+    {
+      src: "/assetgambar/JeansDenim.webp",
+      alt: "Jeans Denim",
+      title: "Jeans Denim",
+    },
     { src: "/assetgambar/premium.webp", alt: "Premium", title: "Premium" },
-    { src: "/assetgambar/HeavyWheight.webp", alt: "Heavy Weight", title: "Heavy Weight" },
-    { src: "/assetgambar/LongHeavyWheight.webp", alt: "Long Heavy Weight", title: "Long Heavy Weight" },
+    {
+      src: "/assetgambar/HeavyWheight.webp",
+      alt: "Heavy Weight",
+      title: "Heavy Weight",
+    },
+    {
+      src: "/assetgambar/LongHeavyWheight.webp",
+      alt: "Long Heavy Weight",
+      title: "Long Heavy Weight",
+    },
     { src: "/assetgambar/Youth.webp", alt: "Youth", title: "Youth" },
     { src: "/assetgambar/Ringer.webp", alt: "Ringer", title: "Ringer" },
     { src: "/assetgambar/Raglan.webp", alt: "Raglan", title: "Raglan" },
@@ -16,14 +32,21 @@ export default function OurCollections() {
     { src: "/assetgambar/Crewneck.webp", alt: "Crewneck", title: "Crewneck" },
     { src: "/assetgambar/Pullover.webp", alt: "Pullover", title: "Pullover" },
     { src: "/assetgambar/Bomber.webp", alt: "Bomber", title: "Bomber" },
-    { src: "/assetgambar/Windbreaker.webp", alt: "Windbreaker", title: "Windbreaker" },
-    { src: "/assetgambar/Coachjaket.webp", alt: "Coachjacket", title: "Coachjacket" },
+    {
+      src: "/assetgambar/Windbreaker.webp",
+      alt: "Windbreaker",
+      title: "Windbreaker",
+    },
+    {
+      src: "/assetgambar/Coachjaket.webp",
+      alt: "Coachjacket",
+      title: "Coachjacket",
+    },
   ];
 
   return (
     // Menggunakan padding vertikal yang adaptif
     <section className="w-full bg-white py-12 md:py-20">
-      
       {/* Judul: Ukuran font responsif dan margin bawah adaptif */}
       <div className="text-center mb-8 md:mb-12 px-4">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium font-['Poppins'] text-black">
@@ -33,12 +56,8 @@ export default function OurCollections() {
 
       {/* Container Grid: Dibuat 3 kolom kaku di SEMUA ukuran (grid-cols-3) */}
       <div className="max-w-7xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 lg:gap-12 px-2 sm:px-4 md:px-8">
-        
         {collections.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center"
-          >
+          <div key={index} className="flex flex-col items-center">
             {/* Image Container: Menggunakan rasio aspek 3:4 (Portrait) dan w-full */}
             <div className="w-full relative aspect-[3/4] mb-2 sm:mb-4">
               <Image
@@ -55,7 +74,7 @@ export default function OurCollections() {
               {item.title}
             </h3>
             {/* Placeholder untuk menjaga jarak bottom (dihapus mb-[60px]) */}
-            <div className="h-4 md:h-8"></div> 
+            <div className="h-4 md:h-8"></div>
           </div>
         ))}
       </div>

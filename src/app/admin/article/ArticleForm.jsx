@@ -126,7 +126,7 @@ export default function ArticleForm({
                   src={formData.ImageUrl}
                   alt="Preview"
                   className="w-48 h-48 object-cover rounded-lg border border-neutral-300"
-                  onError={(e) => e.target.style.display = 'none'}
+                  onError={(e) => (e.target.style.display = "none")}
                 />
               </div>
             )}
@@ -139,7 +139,8 @@ export default function ArticleForm({
               disabled={loading}
               className="bg-blue-600 text-white font-poppins px-6 py-3 rounded-lg hover:bg-blue-700 transition disabled:bg-blue-400 disabled:cursor-not-allowed"
             >
-              {loading ? "Menyimpan..." : buttonText} {/* Gunakan prop buttonText */}
+              {loading ? "Menyimpan..." : buttonText}{" "}
+              {/* Gunakan prop buttonText */}
             </button>
             <button
               type="button"

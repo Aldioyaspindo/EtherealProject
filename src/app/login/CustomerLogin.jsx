@@ -20,7 +20,18 @@ export default function CustomerLogin() {
 
     try {
       const data = await login(username, password);
-      toast.success("Selamat Login Berhasil");
+      toast.success("Selamat Login Berhasil", {
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
 
       // Redirect setelah 1 detik
       setTimeout(() => {
@@ -28,10 +39,19 @@ export default function CustomerLogin() {
       }, 1000);
     } catch (err) {
       console.error("Login error:", err);
-      setError(
-        err.response?.data?.message ||
-          "Login gagal. Periksa username dan password."
-      );
+      toast.error("Login gagal. Periksa username dan password.", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     } finally {
       setLoading(false);
     }
@@ -39,6 +59,7 @@ export default function CustomerLogin() {
 
   return (
     <section className="flex flex-col md:flex-row w-full h-screen">
+      {/* BAGIAN FORM */}
       <div className="flex-1 flex items-center justify-center p-10 bg-gray-50">
         <form
           onSubmit={handleLogin}
@@ -93,13 +114,16 @@ export default function CustomerLogin() {
           <div className="text-center mt-2">
             <span className="text-gray-400">belum punya akun </span>
             <Link href="/register">
-              <span className="text-blue-400 hover:text-blue-700">Register disini!</span>
+              <span className="text-blue-400 hover:text-blue-700">
+                Register disini!
+              </span>
             </Link>
           </div>
         </form>
       </div>
 
-      <div className="flex-1 relative">
+      {/* BAGIAN GAMBAR - DISEMBUNYIKAN DI HP */}
+      <div className="flex-1 relative hidden md:block">
         <Image
           src="/assetgambar/imagelogin.webp"
           alt="Background"

@@ -15,8 +15,8 @@ export default function UserTable({ initialUsers }) {
       // fetch Delete customer
       await axios.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/api/admin/customer/${id}`,
-        { 
-          withCredentials: true 
+        {
+          withCredentials: true,
         }
       );
       setUsers((prev) => prev.filter((item) => item._id !== id));
@@ -24,8 +24,8 @@ export default function UserTable({ initialUsers }) {
         duration: 3000,
         position: "bottom-center",
         style: {
-          background: "#1f2937",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "12px 24px",
           borderRadius: "999px",
           fontSize: "14px",
@@ -39,10 +39,10 @@ export default function UserTable({ initialUsers }) {
           `Gagal: ${error.response.data.message || "Error dari server"}`,
           {
             duration: 4000,
-            position: "top-center",
+            position: "bottom-center",
             style: {
-              background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-              color: "white",
+              background: "#ffffff",
+              color: "black",
               padding: "16px 20px",
               borderRadius: "16px",
               boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
@@ -56,10 +56,10 @@ export default function UserTable({ initialUsers }) {
           "Gagal: Tidak bisa terhubung ke server. Cek API dan CORS.",
           {
             duration: 4000,
-            position: "top-center",
+            position: "bottom-center",
             style: {
-              background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-              color: "white",
+              background: "#ffffff",
+              color: "black",
               padding: "16px 20px",
               borderRadius: "16px",
               boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
@@ -71,10 +71,10 @@ export default function UserTable({ initialUsers }) {
       } else {
         toast.error(`Gagal: ${error.message}`, {
           duration: 4000,
-          position: "top-center",
+          position: "bottom-center",
           style: {
-            background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-            color: "white",
+            background: "#ffffff",
+            color: "black",
             padding: "16px 20px",
             borderRadius: "16px",
             boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
@@ -96,10 +96,14 @@ export default function UserTable({ initialUsers }) {
           <th className="px-4 py-3 text-center font-poppins">Aksi</th>
         </tr>
       </thead>
+
       <tbody>
         {users.length === 0 ? (
           <tr>
-            <td colSpan="3" className="px-4 py-8 text-center text-black">
+            <td
+              colSpan="4"
+              className="px-4 py-8 text-center text-black font-poppins bg-neutral-50"
+            >
               Tidak ada data user
             </td>
           </tr>
@@ -107,16 +111,17 @@ export default function UserTable({ initialUsers }) {
           users.map((user, index) => (
             <tr
               key={user._id}
-              className="text-black border-b border-neutral-200 hover:bg-neutral-50"
+              className="text-black border-b border-neutral-200 hover:bg-neutral-100 transition"
             >
               <td className="px-4 py-3">{index + 1}</td>
               <td className="px-4 py-3 font-medium">{user.username}</td>
               <td className="px-4 py-3 font-medium">{user.nomorhp}</td>
-              <td className="text-center">
+
+              <td className="text-center px-4 py-3">
                 <div className="flex items-center justify-center gap-2">
                   <button
                     onClick={() => handleDelete(user._id)}
-                    className="flex items-center justify-center bg-red-600 text-white px-2 py-2 text-sm rounded hover:bg-red-700 transition"
+                    className="flex items-center justify-center bg-red-600 text-white px-3 py-2 text-sm rounded-md hover:bg-red-700 transition"
                   >
                     <FaRegTrashAlt />
                   </button>

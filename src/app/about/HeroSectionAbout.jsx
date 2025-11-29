@@ -16,10 +16,9 @@ export default function HeroSectionAbout() {
           className="object-cover"
           priority
         />
-        
+
         {/* Overlay dan Logo Container */}
         <div className="relative z-10 bg-black/40 p-6 md:p-8 lg:p-10 rounded-lg max-w-full">
-          
           {/* Logo - Lebih responsif dengan kontrol max-w dan h */}
           {/* Untuk logo, kita tetapkan lebar maksimal yang responsif (max-w) 
               dan tingginya relatif (h-auto) untuk menjaga rasio aspek. */}
@@ -27,11 +26,11 @@ export default function HeroSectionAbout() {
             <Image
               src="/assetgambar/LogoPutih.png"
               alt="Ethereal Logo"
-              // Set width dan height yang besar (atau nilai dummy) 
-              // agar Next.js dapat merender Image, tapi kita atur 
+              // Set width dan height yang besar (atau nilai dummy)
+              // agar Next.js dapat merender Image, tapi kita atur
               // ukuran sebenarnya sepenuhnya melalui className.
-              width={1200} 
-              height={240} 
+              width={1200}
+              height={240}
               className="object-contain w-auto h-auto 
                          max-w-[80vw] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[1000px]"
             />

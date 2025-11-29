@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import axios from "axios";
 import CatalogForm from "../CatalogForm";
+import toast from "react-hot-toast";
 
 export default function UpdateCatalogPage() {
   const router = useRouter();
@@ -34,7 +35,19 @@ export default function UpdateCatalogPage() {
         });
       } catch (error) {
         console.error(error);
-        alert("Gagal memuat data.");
+        toast.error("Gagal memuat data.", {
+          duration: 4000,
+          position: "bottom-center",
+          style: {
+            background: "#ffffff",
+            color: "black",
+            padding: "16px 20px",
+            borderRadius: "16px",
+            boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+            border: "2px solid rgba(255, 255, 255, 0.2)",
+            minWidth: "320px",
+          },
+        });
         router.push("/admin/catalog");
       } finally {
         setPageLoading(false);
@@ -66,11 +79,34 @@ export default function UpdateCatalogPage() {
         { headers: { "Content-Type": "multipart/form-data" } }
       );
 
-      alert("Catalog berhasil diupdate!");
+      toast.success("Catalog berhasil diupdate!", {
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
       router.push("/admin/catalog");
     } catch (error) {
       console.error("Gagal update:", error);
-      alert(error.response?.data?.message || "Update gagal.");
+      toast.error("Update gagal.", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     } finally {
       setSubmitLoading(false);
     }

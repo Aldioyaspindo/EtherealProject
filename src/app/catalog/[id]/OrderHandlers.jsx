@@ -1,5 +1,5 @@
 import { addToCart } from "./api";
-
+import toast from "react-hot-toast";
 export const handleAddToCart = async ({
   selectedSize,
   sessionId,
@@ -7,12 +7,36 @@ export const handleAddToCart = async ({
   quantity,
 }) => {
   if (!selectedSize) {
-    alert("Silakan pilih ukuran terlebih dahulu.");
+    toast.error("Silakan pilih ukuran terlebih dahulu.", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     return;
   }
 
   if (!sessionId) {
-    alert("Session belum siap, coba lagi sebentar.");
+    toast.error("Session belum siap, coba lagi sebentar.", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     return;
   }
 
@@ -32,7 +56,19 @@ export const handleAddToCart = async ({
 
 export const handleOrderWhatsApp = ({ selectedSize, catalog, quantity }) => {
   if (!selectedSize) {
-    alert("Silakan pilih ukuran terlebih dahulu.");
+    toast.error("Silakan pilih ukuran terlebih dahulu", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     return;
   }
 

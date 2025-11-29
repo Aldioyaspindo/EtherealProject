@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar"
+import Navbar from "@/components/Navbar";
 import HeroSectionAbout from "./HeroSectionAbout";
 import AboutStore from "./AboutStore";
 import AboutClothes from "./AboutClothes";
@@ -7,7 +7,7 @@ import AboutSablon from "./AboutSablon";
 import VisiMisi from "./VisiMisi";
 import Feedback from "./Feedback";
 import Lokasi from "./Lokasi";
-import Footer from "@/components/Footer"
+import Footer from "@/components/Footer";
 
 export default function About() {
   console.log("✅ API URL:", process.env.NEXT_PUBLIC_API_URL);
@@ -24,5 +24,5 @@ export default function About() {
       <Lokasi />
       <Footer />
     </main>
-  )
+  );
 }

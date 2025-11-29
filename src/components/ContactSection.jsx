@@ -17,7 +17,6 @@ export default function ContactSection() {
     >
       {/* ==================== Kiri: Lokasi & Kontak ==================== */}
       <div className="flex-1 space-y-4 md:space-y-6 lg:space-y-8">
-        
         {/* Judul: Ukuran font responsif */}
         <h2 className="text-[24px] sm:text-[24px] md:text-[32px] font-medium text-black leading-tight">
           Location Ethereal Store
@@ -37,7 +36,7 @@ export default function ContactSection() {
         {/* Tombol Kontak */}
         <div className="space-y-3 md:space-y-4">
           {/* Tombol akan mengisi lebar penuh container (w-full) dan bukan 600px kaku */}
-          
+
           {/* WhatsApp */}
           <a
             href="https://wa.me/6282312127724?text=Halo%20saya%20ingin%20bertanya"

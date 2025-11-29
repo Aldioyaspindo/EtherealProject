@@ -10,7 +10,7 @@ export default function CreateCatalogPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (formData) => {
-  setLoading(true);
+    setLoading(true);
 
     try {
       const formDataToSend = new FormData();
@@ -35,28 +35,29 @@ export default function CreateCatalogPage() {
 
       console.log("Response:", response.data);
       toast.success("Berhasil Menambahkan Data ke Katalog", {
-          duration: 3000,
-          position: "bottom-center",
-          style: {
-            background: "#1f2937",
-            color: "white",
-            padding: "12px 24px",
-            borderRadius: "999px",
-            fontSize: "14px",
-            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
-          },
-        });
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
       router.push("/admin/catalog");
     } catch (error) {
       console.error("Upload gagal:", error);
       toast.error(
         "Gagal menambahkan catalog: " +
-          (error.response?.data?.message || error.message), {
+          (error.response?.data?.message || error.message),
+        {
           duration: 4000,
           position: "bottom-center",
           style: {
-            background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-            color: "white",
+            background: "#ffffff",
+            color: "black",
             padding: "16px 20px",
             borderRadius: "16px",
             boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",

@@ -12,7 +12,6 @@ const CatalogSection = () => {
 
   useEffect(() => {
     const fetchCatalog = async () => {
-      // ... (Logika pengambilan data tetap sama)
       try {
         console.log("Fetching from:", process.env.NEXT_PUBLIC_API_URL);
 

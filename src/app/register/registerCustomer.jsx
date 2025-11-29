@@ -18,21 +18,18 @@ export default function CustomerRegister() {
     setError("");
 
     try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/customer/register`,
-        {
-          username,
-          nomorhp,
-          password,
-        }
-      );
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/customer/register`, {
+        username,
+        nomorhp,
+        password,
+      });
 
       toast.success("Customer berhasil terdaftar!", {
         duration: 3000,
         position: "bottom-center",
         style: {
-          background: "#1f2937",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "12px 24px",
           borderRadius: "999px",
           fontSize: "14px",
@@ -41,9 +38,7 @@ export default function CustomerRegister() {
       });
       window.location.href = "/login"; // redirect ke login
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Register gagal. Coba lagi."
-      );
+      setError(err.response?.data?.message || "Register gagal. Coba lagi.");
     } finally {
       setLoading(false);
     }
@@ -125,14 +120,16 @@ export default function CustomerRegister() {
           <div className="text-center mt-2">
             <span className="text-gray-400">Sudah punya akun </span>
             <Link href="/login">
-              <span className="text-blue-400 hover:text-blue-700">Login disini!</span>
+              <span className="text-blue-400 hover:text-blue-700">
+                Login disini!
+              </span>
             </Link>
           </div>
         </form>
       </div>
 
-      {/* KANAN: GAMBAR */}
-      <div className="flex-1 relative">
+      {/* KANAN: GAMBAR (AUTO HIDE DI HP) */}
+      <div className="flex-1 relative hidden md:block">
         <Image
           src="/assetgambar/imagelogin.webp"
           alt="Background"

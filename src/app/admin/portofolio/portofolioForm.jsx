@@ -12,7 +12,7 @@ export default function PortofolioForm({
   buttonText,
 }) {
   const router = useRouter();
-  
+
   const [formData, setFormData] = useState({
     keterangan: "",
     gambarFile: null,
@@ -21,18 +21,18 @@ export default function PortofolioForm({
 
   const [previewUrl, setPreviewUrl] = useState(null);
 
-  // ✅ PERBAIKAN: Gunakan initialData.gambarUrl (bukan initialData.gambar)
+  // PERBAIKAN: Gunakan initialData.gambarUrl (bukan initialData.gambar)
   useEffect(() => {
     if (initialData) {
       setFormData({
         keterangan: initialData.keterangan || "",
         gambarFile: null,
-        gambarUrl: initialData.gambarUrl || "", // ✅ Diperbaiki
+        gambarUrl: initialData.gambarUrl || "", // Diperbaiki
       });
     }
   }, [initialData]);
 
-  // ✅ PERBAIKAN: Cleanup preview URL dengan benar
+  // PERBAIKAN: Cleanup preview URL dengan benar
   useEffect(() => {
     let newPreviewUrl = null;
 
@@ -72,21 +72,21 @@ export default function PortofolioForm({
     onSubmit(formData);
   };
 
-  // ✅ PERBAIKAN: Helper function untuk generate correct image URL
+  // PERBAIKAN: Helper function untuk generate correct image URL
   const getImageSrc = () => {
     if (formData.gambarFile) {
       return previewUrl; // File baru yang diupload
     }
-    
+
     if (previewUrl) {
       // Cek apakah URL sudah lengkap (http/https)
-      if (previewUrl.startsWith('http')) {
+      if (previewUrl.startsWith("http")) {
         return previewUrl;
       }
       // Jika tidak, tambahkan base URL
       return `${process.env.NEXT_PUBLIC_API_URL}/${previewUrl}`;
     }
-    
+
     return null;
   };
 
@@ -96,7 +96,6 @@ export default function PortofolioForm({
         <h1 className="text-3xl font-bold text-black mb-6">{pageTitle}</h1>
 
         <form onSubmit={handleSubmit}>
-          
           {/* KETERANGAN PORTOFOLIO */}
           <label className="block mb-2 font-medium text-black">
             Keterangan Portofolio
@@ -127,7 +126,7 @@ export default function PortofolioForm({
               onChange={handleFileChange}
               className="w-full text-black border p-3 rounded-lg"
             />
-            
+
             {/* ✅ PERBAIKAN: Preview dengan URL yang benar */}
             {previewUrl && (
               <div className="mt-4">
@@ -137,14 +136,14 @@ export default function PortofolioForm({
                   alt="Preview"
                   className="w-48 h-48 object-cover text-black rounded-lg border border-neutral-300"
                   onError={(e) => {
-                    e.target.src = '/placeholder-image.png'; // Fallback image
-                    console.error('Error loading image:', previewUrl);
+                    e.target.src = "/placeholder-image.png"; // Fallback image
+                    console.error("Error loading image:", previewUrl);
                   }}
                 />
               </div>
             )}
           </div>
-          
+
           {/* Tombol Aksi */}
           <div className="flex gap-4">
             <button

@@ -27,8 +27,8 @@ export default function CatalogTable({ initialCatalogs }) {
         duration: 3000,
         position: "bottom-center",
         style: {
-          background: "#1f2937",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "12px 24px",
           borderRadius: "999px",
           fontSize: "14px",
@@ -39,10 +39,10 @@ export default function CatalogTable({ initialCatalogs }) {
       console.error(error);
       toast.error("Terjadi Kesalahan Saat menghapus Catalog", {
         duration: 4000,
-        position: "top-center",
+        position: "bottom-center",
         style: {
-          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "16px 20px",
           borderRadius: "16px",
           boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
@@ -97,7 +97,8 @@ export default function CatalogTable({ initialCatalogs }) {
                   </td>
                   <td className="px-4 py-3">
                     <Image
-                      src={catalog.productImage} alt={catalog.productName}
+                      src={catalog.productImage}
+                      alt={catalog.productName}
                       width={500}
                       height={500}
                       className="w-32 h-32 object-cover rounded-lg border border-neutral-300"
@@ -144,7 +145,8 @@ export default function CatalogTable({ initialCatalogs }) {
             >
               {/* Image */}
               <Image
-                src={catalog.productImage} alt={catalog.productName}
+                src={catalog.productImage}
+                alt={catalog.productName}
                 width={500}
                 height={500}
                 className="w-full h-48 object-cover rounded-lg border border-neutral-300"

@@ -25,17 +25,17 @@ export default function CreateArticlePage() {
 
       if (response.status === 200 || response.status === 201) {
         toast.success("Artikel berhasil dibuat!", {
-        duration: 3000,
-        position: "bottom-center",
-        style: {
-          background: "#1f2937",
-          color: "white",
-          padding: "12px 24px",
-          borderRadius: "999px",
-          fontSize: "14px",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
-        },
-      });
+          duration: 3000,
+          position: "bottom-center",
+          style: {
+            background: "#ffffff",
+            color: "black",
+            padding: "12px 24px",
+            borderRadius: "999px",
+            fontSize: "14px",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+          },
+        });
         router.push("/admin/article");
       }
     } catch (error) {
@@ -44,49 +44,55 @@ export default function CreateArticlePage() {
       console.error("Error message:", error.message);
 
       if (error.response) {
-        toast.error(`Error ${error.response.status}: ${
+        toast.error(
+          `Error ${error.response.status}: ${
             error.response.data?.message || "Gagal membuat artikel"
-          }`, {
-        duration: 4000,
-        position: "bottom-center",
-        style: {
-          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-          color: "white",
-          padding: "16px 20px",
-          borderRadius: "16px",
-          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
-          border: "2px solid rgba(255, 255, 255, 0.2)",
-          minWidth: "320px",
-        },
-      });
+          }`,
+          {
+            duration: 4000,
+            position: "bottom-center",
+            style: {
+              background: "#ffffff",
+              color: "black",
+              padding: "16px 20px",
+              borderRadius: "16px",
+              boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+              border: "2px solid rgba(255, 255, 255, 0.2)",
+              minWidth: "320px",
+            },
+          }
+        );
       } else if (error.request) {
-        toast.error("Tidak dapat terhubung ke server. Periksa koneksi atau URL API.", {
-        duration: 4000,
-        position: "bottom-center",
-        style: {
-          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-          color: "white",
-          padding: "16px 20px",
-          borderRadius: "16px",
-          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
-          border: "2px solid rgba(255, 255, 255, 0.2)",
-          minWidth: "320px",
-        },
-      });
+        toast.error(
+          "Tidak dapat terhubung ke server. Periksa koneksi atau URL API.",
+          {
+            duration: 4000,
+            position: "bottom-center",
+            style: {
+              background: "#ffffff",
+              color: "black",
+              padding: "16px 20px",
+              borderRadius: "16px",
+              boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+              border: "2px solid rgba(255, 255, 255, 0.2)",
+              minWidth: "320px",
+            },
+          }
+        );
       } else {
         toast.error(`Error: ${error.message}`, {
-        duration: 4000,
-        position: "bottom-center",
-        style: {
-          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-          color: "white",
-          padding: "16px 20px",
-          borderRadius: "16px",
-          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
-          border: "2px solid rgba(255, 255, 255, 0.2)",
-          minWidth: "320px",
-        },
-      });
+          duration: 4000,
+          position: "bottom-center",
+          style: {
+            background: "#ffffff",
+            color: "black",
+            padding: "16px 20px",
+            borderRadius: "16px",
+            boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+            border: "2px solid rgba(255, 255, 255, 0.2)",
+            minWidth: "320px",
+          },
+        });
       }
     } finally {
       setLoading(false);

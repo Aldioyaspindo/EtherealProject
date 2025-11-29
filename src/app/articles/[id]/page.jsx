@@ -107,7 +107,7 @@ export default function ArticleContent() {
           </button>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </section>
   );
 }

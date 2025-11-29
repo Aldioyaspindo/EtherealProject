@@ -3,7 +3,7 @@ import CustomerLogin from "./CustomerLogin";
 export default function Admin() {
   return (
     <main>
-        <CustomerLogin />
+      <CustomerLogin />
     </main>
-  )
+  );
 }

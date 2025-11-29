@@ -8,7 +8,7 @@ const COLOR_MAP = {
 
 export const getColorCode = (color) => {
   if (!color) return "#ccc";
-  
+
   const normalizedColor = color.toLowerCase();
   return COLOR_MAP[normalizedColor] || color || "#ccc";
 };

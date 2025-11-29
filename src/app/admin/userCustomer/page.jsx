@@ -3,7 +3,6 @@ import UserTable from "./UserTable";
 import { cookies } from "next/headers";
 export const dynamic = "force-dynamic";
 
-
 const fetchUsers = async () => {
   try {
     const token = cookies().get("adminToken")?.value;
@@ -26,7 +25,6 @@ const fetchUsers = async () => {
     });
 
     return res.data?.data ?? [];
-
   } catch (error) {
     console.error("ERROR FETCH USERS (Server):", error);
     return [];

@@ -7,7 +7,7 @@ import {
   FaChevronLeft,
   FaBars,
   FaTimes,
-  FaFileUpload
+  FaFileUpload,
 } from "react-icons/fa";
 import { RiAdminFill } from "react-icons/ri";
 import Link from "next/link";
@@ -93,7 +93,7 @@ export default function AdminMenu() {
               <span>User Customer</span>
             </Link>
 
-             <Link
+            <Link
               href="/admin/catalog"
               className="flex items-center gap-3 hover:text-blue-400 transition"
               onClick={closeMenu}

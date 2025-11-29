@@ -4,11 +4,10 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    // Menggunakan tinggi yang responsif: 
-    // Di mobile, 50vh (setengah layar). 
+    // Menggunakan tinggi yang responsif:
+    // Di mobile, 50vh (setengah layar).
     // Di tablet ke atas (md:), 90vh (hampir layar penuh).
     <section className="relative w-full h-[50vh] md:h-[90vh] overflow-hidden">
-      
       {/* 🔹 Background Image */}
       <Image
         src="/assetgambar/HeroImage.webp"
@@ -24,7 +23,6 @@ export default function HeroSection() {
       {/* 🔹 Konten Utama (Text/Image) */}
       {/* Menambahkan padding horizontal yang responsif: px-4 (kecil) hingga px-8 (besar) */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-8">
-        
         {/* Gambar Logo Putih */}
         {/* Menggunakan max-w-sm di mobile, max-w-xl di tablet, dan max-w-6xl di PC */}
         <Image

@@ -5,7 +5,6 @@ import UserTable from "./UserTable";
 import { cookies } from "next/headers";
 export const dynamic = "force-dynamic";
 
-
 const fetchUsers = async () => {
   try {
     const token = cookies().get("adminToken")?.value; // Server-side token
@@ -14,7 +13,8 @@ const fetchUsers = async () => {
       return [];
     }
 
-    const res = await axios.get( `${process.env.NEXT_PUBLIC_API_URL}/api/admin`,
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/admin`,
       {
         withCredentials: true, // penting agar cookie dikirim otomatis
       }
@@ -23,7 +23,8 @@ const fetchUsers = async () => {
     console.log("Users fetched:", res.data.data);
     return res.data.data || [];
   } catch (error) {
-    console.error("ERROR FETCH USERS (Server):",
+    console.error(
+      "ERROR FETCH USERS (Server):",
       error.response?.status,
       error.response?.data
     );

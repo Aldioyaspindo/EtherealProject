@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 // Asumsi Anda menggunakan Next.js Image dan Link, serta React Icons
-import Image from 'next/image'; 
-import Link from 'next/link';
-import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import Image from "next/image";
+import Link from "next/link";
+import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,25 +14,23 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Catalog', href: '/catalog' },
-    { name: 'About', href: '/about' },
+    { name: "Home", href: "/" },
+    { name: "Catalog", href: "/catalog" },
+    { name: "About", href: "/about" },
   ];
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        
         {/* Kontainer Utama: Logo Kiri & Menu Kanan (didorong oleh justify-between) */}
         <div className="flex items-center justify-between w-full h-16">
-
           {/* 🔹 KIRI: Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
                 src="/assetgambar/MainLogo.png"
                 alt="Logo Ethereal"
-                width={150} 
+                width={150}
                 height={40}
                 priority
                 className="w-[150px] h-auto"
@@ -42,7 +40,6 @@ export default function Navbar() {
 
           {/* 🔹 KANAN: Menu Navigasi (Desktop), Ikon Keranjang, & Hamburger */}
           <div className="flex items-center gap-4">
-            
             {/* Navigasi Desktop */}
             <nav className="hidden md:flex items-center gap-6 lg:gap-8">
               {navItems.map((item) => (
@@ -55,7 +52,7 @@ export default function Navbar() {
                 </Link>
               ))}
             </nav>
-            
+
             {/* Ikon Keranjang */}
             <Link
               href="/keranjang"
@@ -69,7 +66,11 @@ export default function Navbar() {
               onClick={toggleMenu}
               className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             >
-              {isMenuOpen ? <FaTimes className="text-xl text-black" /> : <FaBars className="text-xl text-black" />}
+              {isMenuOpen ? (
+                <FaTimes className="text-xl text-black" />
+              ) : (
+                <FaBars className="text-xl text-black" />
+              )}
             </button>
           </div>
         </div>
@@ -81,7 +82,7 @@ export default function Navbar() {
           }`}
         >
           <div className="flex justify-end mb-8">
-             {/* Tombol Close di dalam mobile menu */}
+            {/* Tombol Close di dalam mobile menu */}
             <button
               onClick={toggleMenu}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -103,7 +104,6 @@ export default function Navbar() {
             ))}
           </nav>
         </div>
-
       </div>
     </header>
   );

@@ -1,4 +1,3 @@
-// ========== ArticleTable.jsx ==========
 "use client";
 
 import { useState } from "react";
@@ -8,23 +7,22 @@ import { FaRegTrashAlt, FaRetweet } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 export default function ArticleTable({ initialArtikels = [] }) {
-  
   const [artikels, setArtikels] = useState(initialArtikels);
-  
+
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('id-ID', options);
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    return new Date(dateString).toLocaleDateString("id-ID", options);
   };
 
-    const truncateText = (text, maxLength) => {
-  // 🔥 PERBAIKAN: Cek jika text adalah falsy (null, undefined, atau string kosong)
-  if (!text) return ""; 
-  
-  // Sekarang aman untuk menggunakan .length
-  if (text.length <= maxLength) return text;
-  
-  return text.substring(0, maxLength) + '...';
-};
+  const truncateText = (text, maxLength) => {
+    // 🔥 PERBAIKAN: Cek jika text adalah falsy (null, undefined, atau string kosong)
+    if (!text) return "";
+
+    // Sekarang aman untuk menggunakan .length
+    if (text.length <= maxLength) return text;
+
+    return text.substring(0, maxLength) + "...";
+  };
 
   const handleDelete = async (id) => {
     const confirmDelete = confirm("yakin ingin menghapus artikel ini ?");
@@ -37,8 +35,8 @@ export default function ArticleTable({ initialArtikels = [] }) {
         duration: 3000,
         position: "bottom-center",
         style: {
-          background: "#1f2937",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "12px 24px",
           borderRadius: "999px",
           fontSize: "14px",
@@ -51,8 +49,8 @@ export default function ArticleTable({ initialArtikels = [] }) {
         duration: 4000,
         position: "bottom-center",
         style: {
-          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "16px 20px",
           borderRadius: "16px",
           boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
@@ -87,9 +85,14 @@ export default function ArticleTable({ initialArtikels = [] }) {
               </tr>
             ) : (
               artikels.map((artikel, index) => (
-                <tr key={artikel._id} className="text-black border-b border-neutral-200 hover:bg-neutral-50">
+                <tr
+                  key={artikel._id}
+                  className="text-black border-b border-neutral-200 hover:bg-neutral-50"
+                >
                   <td className="px-4 py-3">{index + 1}</td>
-                  <td className="px-4 py-3 font-medium">{artikel.JudulArtikel}</td>
+                  <td className="px-4 py-3 font-medium">
+                    {artikel.JudulArtikel}
+                  </td>
                   <td className="px-4 py-3 text-sm text-black">
                     {truncateText(artikel.IsiArtikel, 50)}
                   </td>
@@ -100,7 +103,9 @@ export default function ArticleTable({ initialArtikels = [] }) {
                       className="w-12 h-12 object-cover rounded"
                     />
                   </td>
-                  <td className="px-4 py-3 text-sm">{formatDate(artikel.createdAt)}</td>
+                  <td className="px-4 py-3 text-sm">
+                    {formatDate(artikel.createdAt)}
+                  </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-center gap-2">
                       <Link
@@ -133,10 +138,7 @@ export default function ArticleTable({ initialArtikels = [] }) {
           </div>
         ) : (
           artikels.map((artikel, index) => (
-            <div
-              key={artikel._id}
-              className="bg-white shadow rounded-lg p-3"
-            >
+            <div key={artikel._id} className="bg-white shadow rounded-lg p-3">
               {/* Compact Header */}
               <div className="flex items-start gap-2 mb-2">
                 <img
@@ -146,13 +148,19 @@ export default function ArticleTable({ initialArtikels = [] }) {
                 />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-semibold text-sm text-black line-clamp-2">{artikel.JudulArtikel}</h3>
-                    <span className="text-xs text-neutral-500 flex-shrink-0">#{index + 1}</span>
+                    <h3 className="font-semibold text-sm text-black line-clamp-2">
+                      {artikel.JudulArtikel}
+                    </h3>
+                    <span className="text-xs text-neutral-500 flex-shrink-0">
+                      #{index + 1}
+                    </span>
                   </div>
-                  <p className="text-xs text-neutral-600 mt-1">{formatDate(artikel.createdAt)}</p>
+                  <p className="text-xs text-neutral-600 mt-1">
+                    {formatDate(artikel.createdAt)}
+                  </p>
                 </div>
               </div>
-              
+
               {/* Content Preview */}
               <p className="text-xs text-neutral-700 mb-3 line-clamp-2">
                 {truncateText(artikel.IsiArtikel, 80)}

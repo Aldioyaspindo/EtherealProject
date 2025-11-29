@@ -1,7 +1,7 @@
-"use client"
-import Navbar from "@/components/Navbar"
-import KeranjangPage from "./KeranjangPage"
-import Footer from "@/components/Footer"
+"use client";
+import Navbar from "@/components/Navbar";
+import KeranjangPage from "./KeranjangPage";
+import Footer from "@/components/Footer";
 
 export default function catalog() {
   return (
@@ -10,5 +10,5 @@ export default function catalog() {
       <KeranjangPage />
       <Footer />
     </main>
-  )
+  );
 }

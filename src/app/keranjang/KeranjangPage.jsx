@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 export default function CartPage() {
   const [userId, setUserId] = useState(null);
@@ -37,7 +38,19 @@ export default function CartPage() {
         const message = err.response?.data?.message || "Sesi berakhir.";
 
         if (status === 401) {
-          alert(`Silahkan Login Terlebih Dahulu`);
+          toast.error("Silahkan Login Terlebih Dahulu", {
+            duration: 4000,
+            position: "bottom-center",
+            style: {
+              background: "#ffffff",
+              color: "black",
+              padding: "16px 20px",
+              borderRadius: "16px",
+              boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+              border: "2px solid rgba(255, 255, 255, 0.2)",
+              minWidth: "320px",
+            },
+          });
           setTimeout(() => {
             router.push("/register");
           }, 1000);
@@ -56,14 +69,13 @@ export default function CartPage() {
 
     const fetchCart = async () => {
       try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/cart`,
-          { withCredentials: true }
-        );
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/cart`, {
+          withCredentials: true,
+        });
         setCart(res.data.cart);
         // Select all items by default
         if (res.data.cart?.items) {
-          setSelectedItems(res.data.cart.items.map(item => item._id));
+          setSelectedItems(res.data.cart.items.map((item) => item._id));
         }
       } catch (err) {
         console.log(err);
@@ -75,9 +87,9 @@ export default function CartPage() {
 
   // Toggle checkbox item
   const toggleSelectItem = (itemId) => {
-    setSelectedItems(prev => {
+    setSelectedItems((prev) => {
       if (prev.includes(itemId)) {
-        return prev.filter(id => id !== itemId);
+        return prev.filter((id) => id !== itemId);
       } else {
         return [...prev, itemId];
       }
@@ -89,7 +101,7 @@ export default function CartPage() {
     if (selectedItems.length === cart.items.length) {
       setSelectedItems([]);
     } else {
-      setSelectedItems(cart.items.map(item => item._id));
+      setSelectedItems(cart.items.map((item) => item._id));
     }
   };
 
@@ -108,7 +120,19 @@ export default function CartPage() {
       setCart(data.cart);
     } catch (err) {
       console.error("Error updating quantity:", err);
-      alert("Gagal mengubah jumlah produk");
+      toast.error("Gagal mengubah jumlah produk", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     }
   };
 
@@ -123,39 +147,77 @@ export default function CartPage() {
       const data = res.data;
       setCart(data.cart);
       // Remove from selected items
-      setSelectedItems(prev => prev.filter(id => id !== itemId));
+      setSelectedItems((prev) => prev.filter((id) => id !== itemId));
     } catch (err) {
       console.error("Error removing item:", err);
-      alert("Gagal menghapus produk");
+      toast.error("Gagal menghapus produk", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     }
   };
 
   // Hitung total harga item yang dipilih
   const calculateSelectedTotal = () => {
     if (!cart || !cart.items) return 0;
-    
+
     return cart.items
-      .filter(item => selectedItems.includes(item._id))
+      .filter((item) => selectedItems.includes(item._id))
       .reduce((total, item) => {
         const product = item.product || {};
-        return total + (product.productPrice * item.quantity);
+        return total + product.productPrice * item.quantity;
       }, 0);
   };
 
   // Handler untuk order via WhatsApp
   const orderHandler = () => {
     if (!cart || !cart.items || cart.items.length === 0) {
-      alert("Keranjang Anda kosong!");
+      toast.error("Keranjang Anda kosong!", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
       return;
     }
 
     if (selectedItems.length === 0) {
-      alert("Pilih minimal satu produk untuk dipesan!");
+      toast.error("Pilih minimal satu produk untuk dipesan!", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
       return;
     }
 
     // Filter hanya item yang dipilih
-    const itemsToOrder = cart.items.filter(item => selectedItems.includes(item._id));
+    const itemsToOrder = cart.items.filter((item) =>
+      selectedItems.includes(item._id)
+    );
 
     // Buat pesan WhatsApp
     let message = "Halo, saya ingin memesan:\n\n";
@@ -164,25 +226,31 @@ export default function CartPage() {
       const product = item.product || {};
       message += `*Produk ${index + 1}:*\n`;
       message += `Nama: ${product.productName || "Tidak tersedia"}\n`;
-      
+
       // Tambahkan warna jika ada
       if (product.productColor) {
         message += `Warna: ${product.productColor}\n`;
       }
-      
+
       // Tambahkan ukuran jika ada
       if (product.productSize) {
         message += `Ukuran: ${product.productSize}\n`;
       }
-      
+
       message += `Jumlah: ${item.quantity} pcs\n`;
-      message += `Harga (per pcs): Rp ${product.productPrice?.toLocaleString("id-ID") || 0}\n`;
-      message += `Subtotal: Rp ${(product.productPrice * item.quantity)?.toLocaleString("id-ID") || 0}\n`;
+      message += `Harga (per pcs): Rp ${
+        product.productPrice?.toLocaleString("id-ID") || 0
+      }\n`;
+      message += `Subtotal: Rp ${
+        (product.productPrice * item.quantity)?.toLocaleString("id-ID") || 0
+      }\n`;
       message += `\n`;
     });
 
     const totalSelected = calculateSelectedTotal();
-    message += `*Total Keseluruhan: Rp ${totalSelected?.toLocaleString("id-ID") || 0}*\n\n`;
+    message += `*Total Keseluruhan: Rp ${
+      totalSelected?.toLocaleString("id-ID") || 0
+    }*\n\n`;
     message += "Mohon info lanjut untuk total dan pengiriman. Terima kasih!";
 
     // Encode pesan untuk URL
@@ -197,7 +265,7 @@ export default function CartPage() {
   };
 
   // Render
-  if (!cart) return <p className="p-6">Memuat keranjang...</p>;
+  if (!cart) return <p className="p-6 text-black">Memuat keranjang...</p>;
 
   const totalSelected = calculateSelectedTotal();
 
@@ -217,7 +285,10 @@ export default function CartPage() {
               onChange={toggleSelectAll}
               className="w-5 h-5 cursor-pointer accent-blue-900"
             />
-            <label className="font-medium cursor-pointer" onClick={toggleSelectAll}>
+            <label
+              className="font-medium cursor-pointer"
+              onClick={toggleSelectAll}
+            >
               Pilih Semua ({cart.items.length})
             </label>
           </div>
@@ -228,14 +299,14 @@ export default function CartPage() {
               const imgSrc = product.productImage
                 ? `${process.env.NEXT_PUBLIC_API_URL}/${product.productImage}`
                 : "/placeholder.png";
-              
+
               const isSelected = selectedItems.includes(item._id);
 
               return (
                 <li
                   key={item._id}
                   className={`flex items-center gap-4 border p-4 rounded-lg shadow-sm bg-white hover:shadow-md transition ${
-                    isSelected ? 'border-blue-900 bg-blue-50' : ''
+                    isSelected ? "border-blue-900 bg-blue-50" : ""
                   }`}
                 >
                   {/* Checkbox */}
@@ -272,17 +343,21 @@ export default function CartPage() {
                   <div className="flex flex-col items-end gap-2">
                     <div className="flex items-center gap-2 border rounded-lg">
                       <button
-                        onClick={() => updateQuantity(item._id, item.quantity - 1)}
+                        onClick={() =>
+                          updateQuantity(item._id, item.quantity - 1)
+                        }
                         disabled={item.quantity <= 1}
                         className="px-3 py-1 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed font-bold text-lg"
                       >
-                        −
+                        -
                       </button>
                       <span className="px-3 py-1 min-w-[40px] text-center font-medium">
                         {item.quantity}
                       </span>
                       <button
-                        onClick={() => updateQuantity(item._id, item.quantity + 1)}
+                        onClick={() =>
+                          updateQuantity(item._id, item.quantity + 1)
+                        }
                         className="px-3 py-1 hover:bg-gray-100 font-bold text-lg"
                       >
                         +
@@ -291,7 +366,10 @@ export default function CartPage() {
 
                     {/* Subtotal */}
                     <p className="text-sm font-semibold text-blue-900">
-                      Rp {(product.productPrice * item.quantity)?.toLocaleString("id-ID") || 0}
+                      Rp{" "}
+                      {(product.productPrice * item.quantity)?.toLocaleString(
+                        "id-ID"
+                      ) || 0}
                     </p>
 
                     {/* Hapus Button */}

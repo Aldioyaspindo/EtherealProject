@@ -11,16 +11,14 @@ export default function FeedbackTable({ initialFeedbacks }) {
     if (!confirm("Yakin ingin menghapus feedback ini?")) return;
 
     try {
-      await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}/feedbacks/${id}`
-      );
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/feedbacks/${id}`);
       setFeedbacks(feedbacks.filter((f) => f._id !== id));
       toast.success("Feedback berhasil dihapus!", {
         duration: 3000,
         position: "bottom-center",
         style: {
-          background: "#1f2937",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "12px 24px",
           borderRadius: "999px",
           fontSize: "14px",
@@ -33,8 +31,8 @@ export default function FeedbackTable({ initialFeedbacks }) {
         duration: 4000,
         position: "bottom-center",
         style: {
-          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "16px 20px",
           borderRadius: "16px",
           boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",

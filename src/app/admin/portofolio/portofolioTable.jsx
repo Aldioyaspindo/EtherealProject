@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import { FaRetweet, FaRegTrashAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 export default function PortofolioTable({ initialPortofolios }) {
   const [portofolios, setPortofolios] = useState(initialPortofolios); // Variabel state yang benar
@@ -22,11 +23,34 @@ export default function PortofolioTable({ initialPortofolios }) {
       await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/portofolio/${id}`);
 
       // PERBAIKAN: setCatalogs -> setPortofolios
-      setPortofolios((prev) => prev.filter((item) => item._id !== id)); 
-      toast.success("Berhasil Menghapus Portofolio");
+      setPortofolios((prev) => prev.filter((item) => item._id !== id));
+      toast.success("Berhasil Menghapus Portofolio", {
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
     } catch (error) {
       console.error(error);
-      toast.error("Terjadi Kesalahan Saat menghapus Portofolio");
+      toast.error("Terjadi Kesalahan Saat menghapus Portofolio", {
+        duration: 4000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
+      });
     }
   };
 
@@ -62,9 +86,12 @@ export default function PortofolioTable({ initialPortofolios }) {
                     {portofolio.keterangan}
                   </td>
                   <td className="px-4 py-3">
-                    <img
-                      src={portofolio.gambar} alt={portofolio.keterangan}
+                    <Image
+                      src={portofolio.gambar}
+                      alt={portofolio.keterangan}
                       className="w-32 h-32 object-cover rounded-lg border border-neutral-300"
+                      height={500}
+                      width={500}
                       onError={(e) => {
                         e.target.src =
                           "https://placehold.co/128x128/f1f5f9/64748b?text=Error";
@@ -102,49 +129,60 @@ export default function PortofolioTable({ initialPortofolios }) {
             Tidak ada data portofolio
           </div>
         ) : (
-          portofolios.map((portofolio, index) => ( // Sudah benar menggunakan portofolios.map
-            <div
-              key={portofolio._id}
-              className="bg-white shadow-md rounded-lg p-4 space-y-3"
-            >
-              {/* Image - Tidak ada perubahan */}
-              <img
-                src={`${process.env.NEXT_PUBLIC_API_URL}/${portofolio.gambar}`}
-                alt={portofolio.gambar}
-                className="w-full h-48 object-cover rounded-lg border border-neutral-300"
-                onError={(e) => {
-                  e.target.src =
-                    "https://placehold.co/128x128/f1f5f9/64748b?text=Error";
-                }}
-              />
+          portofolios.map(
+            (
+              portofolio,
+              index // Sudah benar menggunakan portofolios.map
+            ) => (
+              <div
+                key={portofolio._id}
+                className="bg-white shadow-md rounded-lg p-4 space-y-3"
+              >
+                {/* Image - Tidak ada perubahan */}
+                <Image
+                  src={portofolio.gambar}
+                  alt={portofolio.keterangan}
+                  width={500}
+                  height={500}
+                  className="w-full h-48 object-cover rounded-lg border border-neutral-300"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://placehold.co/128x128/f1f5f9/64748b?text=Error";
+                  }}
+                />
 
-              {/* Info - Tidak ada perubahan */}
-              <div className="space-y-2 text-black">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-bold text-lg">{portofolio.keterangan}</h3>
-                  <span className="text-sm text-neutral-600">#{index + 1}</span>
+                {/* Info - Tidak ada perubahan */}
+                <div className="space-y-2 text-black">
+                  <div className="flex justify-between items-start">
+                    <h3 className="font-bold text-lg">
+                      {portofolio.keterangan}
+                    </h3>
+                    <span className="text-sm text-neutral-600">
+                      #{index + 1}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Actions - Tidak ada perubahan */}
+                <div className="flex gap-3 pt-2">
+                  <Link
+                    href={`/admin/portofolio/${portofolio._id}`}
+                    className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                  >
+                    <FaRetweet />
+                    <span>Edit</span>
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(portofolio._id)}
+                    className="flex-1 flex items-center justify-center gap-2 bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
+                  >
+                    <FaRegTrashAlt />
+                    <span>Hapus</span>
+                  </button>
                 </div>
               </div>
-
-              {/* Actions - Tidak ada perubahan */}
-              <div className="flex gap-3 pt-2">
-                <Link
-                  href={`/admin/portofolio/${portofolio._id}`}
-                  className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-                >
-                  <FaRetweet />
-                  <span>Edit</span>
-                </Link>
-                <button
-                  onClick={() => handleDelete(portofolio._id)}
-                  className="flex-1 flex items-center justify-center gap-2 bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
-                >
-                  <FaRegTrashAlt />
-                  <span>Hapus</span>
-                </button>
-              </div>
-            </div>
-          ))
+            )
+          )
         )}
       </div>
     </>

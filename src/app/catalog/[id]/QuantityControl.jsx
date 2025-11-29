@@ -2,9 +2,9 @@ import React from "react";
 
 export default function QuantityControl({ quantity, setQuantity }) {
   const handleIncrease = () => setQuantity((prev) => prev + 1);
-  
+
   const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-  
+
   const handleInputChange = (value) => {
     const num = parseInt(value, 10);
     if (!isNaN(num) && num >= 1) setQuantity(num);

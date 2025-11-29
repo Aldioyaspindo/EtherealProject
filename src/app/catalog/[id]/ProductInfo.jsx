@@ -56,13 +56,6 @@ export default function ProductInfo({
       <QuantityControl quantity={quantity} setQuantity={setQuantity} />
 
       <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-        {/* <button
-          onClick={onAddToCart}
-          className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 bg-[#FF7274] text-white text-xl rounded-lg hover:bg-[#fa9193] transition"
-        >
-          <FaShoppingCart className="text-2xl text-white" />
-          <span>Keranjang</span>
-        </button> */}
         <button
           onClick={onOrderWhatsApp}
           className="flex items-center justify-center gap-2 w-full sm:w-auto flex-1 px-6 py-4 bg-blue-900 text-white text-xl rounded-lg hover:bg-blue-800 transition"

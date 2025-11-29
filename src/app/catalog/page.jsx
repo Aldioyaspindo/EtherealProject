@@ -1,6 +1,6 @@
-import Navbar from "@/components/Navbar"
-import CatalogSection from "./CatalogSection"
-import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar";
+import CatalogSection from "./CatalogSection";
+import Footer from "@/components/Footer";
 
 export default function catalog() {
   return (
@@ -9,5 +9,5 @@ export default function catalog() {
       <CatalogSection />
       <Footer />
     </main>
-  )
+  );
 }

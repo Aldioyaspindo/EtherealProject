@@ -76,7 +76,7 @@ export default function HowtoOrde() {
                 <div className="flex-1 pt-1">
                   <h3 className="font-semibold text-gray-800 mb-1 flex items-center gap-2">
                     Lanjut ke WhatsApp
-                    <FaWhatsapp className="text-[25px]"/>
+                    <FaWhatsapp className="text-[25px]" />
                   </h3>
                   <p className="text-gray-600 text-sm">
                     Pemesanan otomatis diteruskan ke WhatsApp
@@ -105,7 +105,7 @@ export default function HowtoOrde() {
           <div className="bg-gradient-to-r from-amber-50 to-yellow-50 px-6 py-4 border-t border-amber-100">
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0 w-8 h-8 bg-amber-400 text-white rounded-full flex items-center justify-center text-lg">
-                <AiFillWarning/>
+                <AiFillWarning />
               </div>
               <div>
                 <p className="text-sm font-semibold text-amber-900 mb-1">

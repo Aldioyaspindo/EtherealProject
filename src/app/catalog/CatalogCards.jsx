@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { addToCart } from "../lib/api"; // ✅ Import dari api.js
+import { addToCart } from "../lib/api"; // Import dari api.js
 
 export default function CatalogCards({ item }) {
   const [loading, setLoading] = useState(false);
@@ -22,8 +22,8 @@ export default function CatalogCards({ item }) {
         duration: 3000,
         position: "bottom-center",
         style: {
-          background: "#1f2937",
-          color: "white",
+          background: "#ffffff",
+          color: "black",
           padding: "12px 24px",
           borderRadius: "999px",
           fontSize: "14px",
@@ -34,14 +34,35 @@ export default function CatalogCards({ item }) {
       console.error("Error add to cart:", err);
 
       if (err.response?.data?.requireAuth) {
-        toast.error("Silakan login terlebih dahulu");
+        toast.error("Silakan login terlebih dahulu", {
+          duration: 4000,
+          position: "bottom-center",
+          style: {
+            background: "#ffffff",
+            color: "black",
+            padding: "16px 20px",
+            borderRadius: "16px",
+            boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+            border: "2px solid rgba(255, 255, 255, 0.2)",
+            minWidth: "320px",
+          },
+        });
         setTimeout(() => router.push("/login"), 1000);
         return;
       }
 
       toast.error(`Gagal: ${err.response?.data?.message || err.message}`, {
         duration: 4000,
-        position: "top-center",
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "16px 20px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+          border: "2px solid rgba(255, 255, 255, 0.2)",
+          minWidth: "320px",
+        },
       });
     } finally {
       setLoading(false);

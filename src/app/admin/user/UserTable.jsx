@@ -27,7 +27,19 @@ export default function UserTableClient({ initialUsers }) {
         error.response?.data
       );
       if (error.response?.status === 401 || error.response?.status === 403) {
-        toast.error("Sesi habis atau izin ditolak.");
+        toast.error("Sesi habis atau izin ditolak.", {
+          duration: 4000,
+          position: "bottom-center",
+          style: {
+            background: "#ffffff",
+            color: "black",
+            padding: "16px 20px",
+            borderRadius: "16px",
+            boxShadow: "0 10px 40px rgba(245, 87, 108, 0.4)",
+            border: "2px solid rgba(255, 255, 255, 0.2)",
+            minWidth: "320px",
+          },
+        });
         router.push("/loginadmin");
       }
       return [];
@@ -47,7 +59,18 @@ export default function UserTableClient({ initialUsers }) {
         `${process.env.NEXT_PUBLIC_API_URL}/api/admin/${userId}`,
         { withCredentials: true }
       );
-      toast.success(`User ${userId} berhasil dihapus.`);
+      toast.success(`User ${userId} berhasil dihapus.`, {
+        duration: 3000,
+        position: "bottom-center",
+        style: {
+          background: "#ffffff",
+          color: "black",
+          padding: "12px 24px",
+          borderRadius: "999px",
+          fontSize: "14px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        },
+      });
 
       // Filter list users saat ini, hanya menyisakan user yang TIDAK memiliki userId ini
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
@@ -63,7 +86,7 @@ export default function UserTableClient({ initialUsers }) {
       } else if (error.response?.status === 404) {
         toast.error("User tidak ditemukan.");
       } else if (error.response?.status === 400) {
-        toast.error("Tidak Dapat menghapus akun admin sendiri") 
+        toast.error("Tidak Dapat menghapus akun admin sendiri");
       } else {
         toast.error("Gagal menghapus user.");
       }
@@ -81,7 +104,7 @@ export default function UserTableClient({ initialUsers }) {
           <th className="px-4 py-3 text-center font-poppins">Aksi</th>
         </tr>
       </thead>
-      
+
       <tbody>
         {/* ... (loading dan users.length checks) */}
         {users.map((user, index) => (
@@ -89,7 +112,7 @@ export default function UserTableClient({ initialUsers }) {
             key={user._id}
             className="text-black border-b border-neutral-200 hover:bg-neutral-50"
           >
-           <td className="px-4 py-3">{index + 1}</td>
+            <td className="px-4 py-3">{index + 1}</td>
             <td className="px-4 py-3 font-medium">{user.username}</td>
             <td className="text-center">
               <div className="flex items-center justify-center gap-2">
@@ -98,7 +121,7 @@ export default function UserTableClient({ initialUsers }) {
                   className="flex items-center justify-center bg-red-600 text-white px-2 py-2 text-sm rounded hover:bg-red-700 transition"
                   disabled={loading}
                 >
-                  <FaRegTrashAlt /> 
+                  <FaRegTrashAlt />
                 </button>
               </div>
             </td>
