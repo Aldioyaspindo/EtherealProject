@@ -101,7 +101,7 @@ export default function CustomerLogin() {
 
       <div className="flex-1 relative">
         <Image
-          src="/assetgambar/imagelogin.jpg"
+          src="/assetgambar/imagelogin.webp"
           alt="Background"
           fill
           className="object-cover blur-sm brightness-90"
