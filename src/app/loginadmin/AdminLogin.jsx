@@ -11,41 +11,42 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
- const handleLogin = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  setError("");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
-  try {
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/admin/login`,
-      { username, password },
-      { withCredentials: true }
-    );
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admin/login`,
+        { username, password },
+        { withCredentials: true }
+      );
 
-    console.log("✅ Admin login success:", res.data);
+      console.log("✅ Admin login success:", res.data);
 
-    // Simpan token (sama seperti customer)
-    if (res.data.token) {
-      localStorage.setItem('adminToken', res.data.token);
-      console.log("💾 Admin token saved");
+      // Simpan token di COOKIES (bukan localStorage)
+      if (res.data.token) {
+        document.cookie = `adminToken=${res.data.token}; path=/; max-age=${
+          7 * 24 * 60 * 60
+        }`; // 7 hari
+        console.log("💾 Admin token saved to cookies");
+      }
+
+      // Redirect
+      setTimeout(() => {
+        window.location.href = "/admin";
+      }, 100);
+    } catch (err) {
+      console.error("❌ Admin login error:", err);
+      setError(
+        err.response?.data?.message ||
+          "Login gagal. Periksa username dan password."
+      );
+    } finally {
+      setLoading(false);
     }
-
-    // Redirect dengan delay kecil (mirip customer kalau pakai ini)
-    setTimeout(() => {
-      window.location.href = "/admin";
-    }, 100);
-
-  } catch (err) {
-    console.error("❌ Admin login error:", err);
-    setError(
-      err.response?.data?.message ||
-        "Login gagal. Periksa username dan password."
-    );
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <section className="flex flex-col md:flex-row w-full h-screen">
