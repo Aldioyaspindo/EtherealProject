@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { Router } from "next/router";
 import { useRouter } from "next/navigation";
 
 export default function AdminLogin() {
@@ -25,8 +23,15 @@ export default function AdminLogin() {
         { withCredentials: true }
       );
 
-      // Redirect setelah 1 detik
-      router.push("/admin");
+      console.log("✅ Login success");
+
+      // ✅ Simpan token sebagai fallback
+      if (res.data.token) {
+        localStorage.setItem('adminToken', res.data.token);
+      }
+
+      // ✅ PERBAIKAN: Gunakan window.location untuk force redirect
+      window.location.href = "/admin";
 
     } catch (err) {
       setError(
@@ -37,6 +42,7 @@ export default function AdminLogin() {
       setLoading(false);
     }
   };
+
   return (
     <section className="flex flex-col md:flex-row w-full h-screen">
       {/* =============================== */}
